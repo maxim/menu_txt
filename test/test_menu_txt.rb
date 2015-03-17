@@ -9,8 +9,12 @@ class TestMenuTxt < Minitest::Test
     assert_equal(options[:parent], node.parent) if options[:parent]
     assert_equal(options[:level],  node.level)  if options[:level]
 
-    if options[:leaf]
-      assert(node.leaf?, "Expected \"#{node.name}\" not to be a leaf node")
+    if options.key?(:leaf)
+      if options[:leaf]
+        assert(node.leaf?, "Expected \"#{node.name}\" to be a leaf node")
+      else
+        refute(node.leaf?, "Expected \"#{node.name}\" not to be a leaf node")
+      end
     end
   end
 
