@@ -1,4 +1,4 @@
-# MenuTxt
+# menu_txt
 
 If you have non-technical people who want to be able to edit menus on your website, this is the gem for you.
 
