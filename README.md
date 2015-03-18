@@ -1,5 +1,9 @@
 # menu_txt
 
+[![Build Status](https://travis-ci.org/maxim/menu_txt.svg?branch=master)](https://travis-ci.org/maxim/menu_txt)
+[![Code Climate](https://codeclimate.com/github/maxim/menu_txt/badges/gpa.svg)](https://codeclimate.com/github/maxim/menu_txt)
+
+
 If you have non-technical people who want to be able to edit menus on your website, this is the gem for you.
 
 ## Quick Start
