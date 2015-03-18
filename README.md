@@ -2,11 +2,14 @@
 
 If you have non-technical people who want to be able to edit menus on your website, this is the gem for you.
 
-## Usage
+## Quick Start
 
-The gem is not rails-dependent, but here's a good example of rails usage.
+This gem doesn't require Rails, but seeing how it works with Rails should give you a good enough idea of how to use it.
 
-Throw a text file somewhere, say `app/menus/my_awesome_menu.txt`.
+
+### Syntax
+
+Let's create a text file somewhere, say `app/menus/my_awesome_menu.txt`.
 
 ~~~plain
 1st level thing 1 | /foo1
@@ -23,21 +26,30 @@ Throw a text file somewhere, say `app/menus/my_awesome_menu.txt`.
 1st level thing 2 | /foo2
 ~~~
 
-You can place that file anywhere you like, but placing all the menus in one dir is a good idea, because we can add this line to `development.rb`.
+Dashes in front are nesting levels, a pipe `|` separates text from url. Blank lines are ignored. That's all there is to know.
+
+
+### Rails auto-reload
+
+When you're in Rails it's best to put all the menus in one dir, because you could then add this line to `development.rb`.
 
 ~~~ruby
 config.watchable_dirs['app/menus'] = [:txt]
 ~~~
 
-This line ensures that all changes to txt files in `app/menus` will cause your rails app to reload, so you can see changes with a browser refresh.
+It ensures that any changes to txt files in `app/menus` will reload your app, so you could see changes on a browser refresh.
 
-Next, create a class for your menu, for example it could be `app/models/my_awesome_menu.rb`. Put this code into it.
+### Menu class (model)
+
+Create a class for your menu, it could just be another model in your rails app, so let's put it in `app/models/my_awesome_menu.rb`.
 
 ~~~ruby
 MyAwesomeMenu = MenuTxt.parse_path('app/menus/my_awesome_menu.txt')
 ~~~
 
-And now we just need a partial which will render itself recursively for every submenu. For example, let's create `app/views/my_awesome_menu/_nodes.html.erb`.
+### HTML
+
+Now we just need a partial that can render itself recursively for every submenu. For example, let's create `app/views/my_awesome_menu/_nodes.html.erb`.
 
 ~~~html
 <% nodes.each do |node| %>
